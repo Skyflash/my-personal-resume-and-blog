@@ -142,6 +142,14 @@ page can claim it (whichever one doesn't, the site root 404s).
 4. If you're **not** using a custom domain (i.e. publishing at `https://<username>.github.io/<repo>`), set `baseurl: '/<repo>'` in `_config.yml`.
 5. GitHub Pages' classic "Deploy from a branch" pipeline always builds with the `github-pages` gem pinned in the `Gemfile` — that's also what this repo uses locally, so what works on your machine works when published.
 
+## Support
+
+If you find this theme useful, you can support its development:
+
+[![Buy me a coffee](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-FFDD00?style=flat&logo=buymeacoffee&logoColor=brown)](https://buymeacoffee.com/cristiancastellari)
+
+Or use the GitHub Sponsors button on the top-right of the repository.
+
 ## License
 
 MIT — see [LICENSE](LICENSE). Once you replace the placeholder content with your own, that content is of course yours to license however you like.
