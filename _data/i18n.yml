@@ -68,6 +68,9 @@ footer_privacy:
 footer_aria_feed:
   it: Feed RSS
   en: RSS feed
+footer_theme_credit:
+  it: 'Tema di <a href="https://cristiancastellari.it" target="_blank" rel="noopener">Cristian Castellari</a>'
+  en: 'Theme by <a href="https://cristiancastellari.it" target="_blank" rel="noopener">Cristian Castellari</a>'
 
 share_heading:
   it: "Condividi:"
