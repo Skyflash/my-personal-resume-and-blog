@@ -1,0 +1,35 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
+  <meta name="baseurl" content="{{ site.baseurl }}">
+  <meta name="robots" content="index,follow">
+  <meta name="rating" content="{{ site.settings.rating }}">
+
+  <link rel="shortcut icon" href="{{ '/static/assets/img/favicon.svg' | relative_url }}">
+
+  {% seo %}
+
+  {% include i18n-alternates.html %}
+  {% for entry in i18n_alternates %}
+    {% assign parts = entry | split: "|" %}
+    <link rel="alternate" hreflang="{{ parts[0] }}" href="{{ parts[1] | absolute_url }}">
+  {% endfor %}
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/static/assets/fork-awesome/css/fork-awesome.min.css' | relative_url }}">
+
+  <script>
+    // Apply the saved theme right away, before paint, to avoid a flash of the wrong theme.
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.setAttribute('data-theme', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>

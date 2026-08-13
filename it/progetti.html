@@ -1,0 +1,13 @@
+---
+layout: page
+title: Progetti
+description: Alcuni progetti di esempio
+permalink: /it/progetti/
+lang: it_IT
+translation_key: page-projects
+---
+<div class="grid grid--3">
+  {% for project in site.data.index.projects %}
+  {% include project-card.html project=project %}
+  {% endfor %}
+</div>

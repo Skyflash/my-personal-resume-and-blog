@@ -1,0 +1,26 @@
+# Blog categories, shown in the nav submenu (alphabetical order per language).
+# One row per language per category: "name" is also the matching key against
+# post.categories (site.categories[name] / where: "name", category), so each
+# language uses its own literal name string.
+# "href": keep the same slug across languages only where it's already a neutral
+# word or proper noun; otherwise translate the slug for the /en/ section, so an
+# English reader never sees a non-English word in the URL. Categories live at
+# the site root, not under /blog/.
+#
+# These two categories are just examples — replace them with your own.
+
+# --- it ---
+- name: Appunti
+  href: /it/appunti/
+  lang: it
+- name: Guide
+  href: /it/guide/
+  lang: it
+
+# --- en ---
+- name: Notes
+  href: /en/notes/
+  lang: en
+- name: Guides
+  href: /en/guides/
+  lang: en

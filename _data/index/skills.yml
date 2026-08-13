@@ -1,0 +1,48 @@
+# Skills section data — skills grouped by category, names translated per language.
+# This is example/placeholder content: replace it with your own skills and ratings.
+
+label: Skills
+id: cs
+categories:
+  - name:
+      it: Categoria Uno
+      en: Category One
+    skills:
+      - name:
+          it: Competenza A
+          en: Skill A
+        percentage: 90
+      - name:
+          it: Competenza B
+          en: Skill B
+        percentage: 80
+      - name:
+          it: Competenza C
+          en: Skill C
+        percentage: 70
+
+  - name:
+      it: Categoria Due
+      en: Category Two
+    skills:
+      - name:
+          it: Competenza D
+          en: Skill D
+        percentage: 85
+      - name:
+          it: Competenza E
+          en: Skill E
+        percentage: 65
+
+  - name:
+      it: Categoria Tre
+      en: Category Three
+    skills:
+      - name:
+          it: Competenza F
+          en: Skill F
+        percentage: 75
+      - name:
+          it: Competenza G
+          en: Skill G
+        percentage: 60

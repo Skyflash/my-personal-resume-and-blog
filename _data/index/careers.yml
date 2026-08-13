@@ -1,0 +1,44 @@
+# Career/timeline data — every text field is a map {it, en}.
+# This is example/placeholder content: replace it with your own work history.
+- name:
+    it: Azienda di Esempio S.r.l.
+    en: Example Company Inc.
+  desc:
+    it: Breve descrizione di cosa fai in questo ruolo — responsabilità principali, progetti di cui vai fiero, tecnologie usate ogni giorno.
+    en: A short description of what you do in this role — main responsibilities, projects you're proud of, technologies you use day to day.
+  date:
+    it: Gennaio 2022 - Presente
+    en: January 2022 - Present
+  job:
+    it: Il Tuo Titolo di Lavoro
+    en: Your Job Title
+  icon: fa-briefcase
+  present: true
+
+- name:
+    it: Precedente Azienda S.p.A.
+    en: Previous Company Ltd.
+  desc:
+    it: Un'altra breve descrizione. Puoi aggiungere quante voci vuoi in questo file — la timeline le mostra tutte in ordine.
+    en: Another short description. Add as many entries as you like to this file — the timeline renders them all in order.
+  date:
+    it: Marzo 2019 - Dicembre 2021
+    en: March 2019 - December 2021
+  job:
+    it: Titolo di Lavoro Precedente
+    en: Previous Job Title
+  icon: fa-briefcase
+
+- name:
+    it: Prima Azienda S.r.l.
+    en: First Company LLC
+  desc:
+    it: La tua prima esperienza rilevante. Anche una singola riga va bene se preferisci restare sintetico.
+    en: Your first relevant experience. A single line is fine too if you'd rather keep it brief.
+  date:
+    it: Giugno 2016 - Febbraio 2019
+    en: June 2016 - February 2019
+  job:
+    it: Titolo Junior
+    en: Junior Job Title
+  icon: fa-briefcase

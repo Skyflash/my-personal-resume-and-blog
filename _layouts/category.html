@@ -1,0 +1,20 @@
+---
+layout: default
+---
+{% assign short_lang = page.lang | slice: 0, 2 | default: site.default_lang %}
+<section class="section container">
+  <div class="section-header">
+    <span class="eyebrow">{{ site.data.i18n.category_eyebrow[short_lang] }}</span>
+    <h1>{{ page.title }}</h1>
+  </div>
+  {% assign posts = site.categories[page.category] | where: "lang", page.lang %}
+  {% if posts.size > 0 %}
+  <div class="grid grid--3">
+    {% for post in posts %}
+    {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="card__desc">{{ site.data.i18n.category_empty[short_lang] }}</p>
+  {% endif %}
+</section>

@@ -1,0 +1,20 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Person" lang="{{ page.lang | slice: 0, 2 | default: site.default_lang }}">
+
+{% include head.html %}
+
+<body>
+
+{% include nav.html %}
+
+<main>
+{{ content }}
+</main>
+
+{% include footer.html %}
+
+</body>
+</html>

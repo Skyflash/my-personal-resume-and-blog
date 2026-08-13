@@ -1,0 +1,27 @@
+# Projects section data — name/desc are maps {it, en}.
+# This is example/placeholder content: replace it with your own projects.
+# `img` is optional (the card just skips the image if it's not set) — see
+# static/assets/img/landing/ in the README for where to put your own.
+- name:
+    it: Progetto di Esempio Uno
+    en: Example Project One
+  gh_user: octocat
+  repo: Hello-World
+  desc:
+    it: "Un progetto collegato a una repo GitHub reale (octocat/Hello-World): la card mostra stelle e fork live, presi dalla API pubblica di GitHub."
+    en: "A project linked to a real GitHub repo (octocat/Hello-World): the card shows live stars/forks, pulled from the public GitHub API."
+
+- name:
+    it: Progetto di Esempio Due
+    en: Example Project Two
+  url: https://example.com
+  desc:
+    it: "Un progetto con un link esterno qualsiasi (`url:`) invece di una repo GitHub — niente statistiche live in questo caso."
+    en: "A project with a plain external link (`url:`) instead of a GitHub repo — no live stats in this case."
+
+- name:
+    it: Progetto di Esempio Tre
+    en: Example Project Three
+  desc:
+    it: "Un progetto senza alcun link: il titolo viene mostrato come testo semplice, non come link."
+    en: "A project with no link at all: the title is shown as plain text, not a link."

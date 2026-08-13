@@ -1,0 +1,8 @@
+---
+title: robots
+---
+User-agent: *
+Disallow: /static/*
+Disallow: /*.json
+
+Sitemap: {{ site.url }}{{ site.baseurl }}/sitemap.xml

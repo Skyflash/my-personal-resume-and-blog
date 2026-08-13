@@ -1,0 +1,38 @@
+{% comment %}
+  Computes the sibling versions (other languages) of the current page, as a
+  list of "lang|url" strings. Used both by head.html (hreflang) and nav.html
+  (the language switcher).
+  Note: {% include %} in Jekyll shares its Liquid scope with the caller, so
+  `i18n_alternates` stays set outside this file too.
+
+  Single mechanism based on `translation_key` in front matter, for both posts
+  and pages (home/CV/Projects/Contact/categories). No URL prefix-swapping:
+  slugs can differ between languages (e.g. /it/progetti/ vs /en/projects/), so
+  just swapping the /it|en/ prefix is no longer enough to find the sibling page.
+  Pages without `translation_key` (legal pages, 404, any post you haven't
+  translated) simply get no switcher — that's the default, no extra config
+  needed.
+{% endcomment %}
+{% assign short_lang = page.lang | slice: 0, 2 %}
+{% assign i18n_alternates = "" | split: "" %}
+
+{% if page.translation_key %}
+  {% if page.layout == "post" %}
+    {% assign siblings = site.posts | where: "translation_key", page.translation_key %}
+  {% else %}
+    {% assign siblings = site.pages | where: "translation_key", page.translation_key %}
+  {% endif %}
+  {% comment %} Fixed it -> en order, regardless of the order Jekyll happens to
+  return site.posts/site.pages in. Add more languages to this list if you add
+  more languages to the site. {% endcomment %}
+  {% assign ordered_langs = "it,en" | split: "," %}
+  {% for l in ordered_langs %}
+    {% for sibling in siblings %}
+      {% assign sibling_short_lang = sibling.lang | slice: 0, 2 %}
+      {% if sibling_short_lang == l %}
+        {% assign entry = sibling_short_lang | append: "|" | append: sibling.url %}
+        {% assign i18n_alternates = i18n_alternates | push: entry %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}

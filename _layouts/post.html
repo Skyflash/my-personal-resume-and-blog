@@ -1,0 +1,79 @@
+---
+layout: default
+---
+{% assign short_lang = page.lang | slice: 0, 2 | default: site.default_lang %}
+{% assign i18n = site.data.i18n %}
+<article class="section container">
+  <header class="post-header">
+    <p class="card__meta">
+      {{ page.date | date: "%-d %b %Y" }} · {{ page.content | number_of_words }} {{ i18n.post_words[short_lang] }} · {{ i18n.post_reading_time[short_lang] }} {{ page.content | number_of_words | divided_by: 180 }} {{ i18n.post_reading_time_min[short_lang] }}
+    </p>
+    <h1>{{ page.title }}</h1>
+    {% if page.categories %}
+    <div class="pill-row">
+      {% for category in page.categories %}
+      {% assign cat_data = site.data.blog | where: "name", category | where: "lang", short_lang | first %}
+      <a class="pill" href="{{ cat_data.href | relative_url }}">{{ category }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  {% if page.image and page.image_dark %}
+  <img class="post-image post-image--on-light" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+  <img class="post-image post-image--on-dark" src="{{ page.image_dark | relative_url }}" alt="{{ page.title }}">
+  {% elsif page.image %}
+  <img class="post-image" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+  {% endif %}
+
+  {% if page.intro %}<p class="post-intro">{{ page.intro }}</p>{% endif %}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {% if page.tags %}
+  <div class="pill-row prose" style="margin-top: var(--space-4);">
+    {% for tag in page.tags %}<span class="pill">{{ tag }}</span>{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="post-share">
+    {% include social.html %}
+  </div>
+
+  {% assign maxRelated = 4 %}
+  {% assign minCommonTags = 1 %}
+  {% assign maxRelatedCounter = 0 %}
+  {% assign related = "" | split: "" %}
+  {% for post in site.posts %}
+    {% assign sameTagCount = 0 %}
+    {% for tag in post.tags %}
+      {% if post.url != page.url and post.lang == page.lang and page.tags contains tag %}
+        {% assign sameTagCount = sameTagCount | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    {% if sameTagCount >= minCommonTags %}
+      {% assign related = related | push: post %}
+      {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+      {% if maxRelatedCounter >= maxRelated %}{% break %}{% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if related.size > 0 %}
+  <div class="related-posts">
+    <div class="section-header">
+      <h2>{{ i18n.post_related_heading[short_lang] }}</h2>
+    </div>
+    <div class="grid grid--3">
+      {% for post in related %}
+      {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="post-comments">
+    {% include comments.html %}
+  </div>
+</article>
