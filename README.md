@@ -1,20 +1,22 @@
 # Personal Resume & Blog (Jekyll theme)
 
-A personal CV/resume + blog theme for [Jekyll](https://jekyllrb.com/), built to run on [GitHub Pages](https://pages.github.com/) with zero front-end build tooling and zero third-party JavaScript. Bilingual out of the box (Italian/English placeholder content) — use both languages, trim it to one, or extend it to more.
+A personal CV/resume + blog theme for [Jekyll](https://jekyllrb.com/), built to run on [GitHub Pages](https://pages.github.com/) with zero front-end build tooling and no required third-party JavaScript. Bilingual out of the box (Italian/English placeholder content) — use both languages, trim it to one, or extend it to more.
 
 This repository is the theme **plus example placeholder content** (lorem ipsum posts, example CV data, example legal pages) so it runs out of the box. Replace the placeholders with your own content and it's your site.
 
 ## Features
 
-- **Pure Jekyll**, no front-end build pipeline: CSS compiled natively via Jekyll/Sass, zero third-party JavaScript (no jQuery, no bundler).
+- **Pure Jekyll**, no front-end build pipeline: CSS compiled natively via Jekyll/Sass, no required third-party JavaScript (no jQuery, no bundler). The one optional exception is the cookie consent banner, and even that's vendored into this repo rather than loaded from a CDN — see below.
 - **Multilingual** (Italian/English example content shipped, extensible): permalinks under `/it/`/`/en/`, a language switcher with `hreflang` tags, all driven by front matter and `_data/i18n.yml` — no i18n plugin (not compatible with GitHub Pages' plugin whitelist).
 - **Light / dark / automatic theme**, persisted across pages (`localStorage`), user-chosen or following `prefers-color-scheme`.
 - **Multi-page**: Home, CV/Experience, Projects, Blog (with categories and pagination), Contact — not a single scrolling landing page.
 - **Blog** with configurable categories (per language), a category index with post counts, language-filtered pagination, and client-side search (fetches `search.json`, no external library, results filtered to the current language).
+- **Featured post**: flag one post per language (`featured: true` in its front matter) to pin it as a large card at the top of the blog index — see [Writing posts](#writing-posts).
 - **Theme-adaptive post cover images**: two images per post, one for light theme and one for dark, chosen purely via CSS.
 - **Live GitHub stats** (stars/forks) on project cards, cached in `localStorage` to stay under the public API's rate limit.
 - Icons via [Fork Awesome](https://forkaweso.me/), with hand-written inline SVG for icons not in that set (X/Twitter, Bluesky, and the language-switcher flags).
 - Configurable, stable post permalinks with built-in redirect support (`jekyll-redirect-from`), so renaming a category later doesn't break existing links.
+- **Optional, self-hosted cookie consent banner** ([CookieConsent v3](https://cookieconsent.orestbida.com/), MIT), theme-aware (follows light/dark/auto automatically) and wired to gate the Disqus embed behind actual consent — see [Cookie consent](#cookie-consent) below. Not required, and easy to remove entirely if your site doesn't need one.
 
 ## Quick start
 
@@ -44,7 +46,8 @@ Then start customizing — see below for where everything lives.
 7. **Blog categories** — `_data/blog.yml`.
 8. **UI text** (nav labels, buttons, "reading time", etc.) — `_data/i18n.yml`, one key per string.
 9. **Legal pages** — `disclaimer.md` and `privacy.md` at the repo root are placeholders with notes on what to actually put there. Don't ship them as-is.
-10. **Comments / analytics** (optional) — `_config.yml` → `disqus:` and `ga:`, both commented out by default.
+10. **Comments / analytics** (optional) — `_config.yml`. `disqus:` ships with a placeholder shortname (comment out the two lines to disable comments entirely); `ga:`'s `id:` is commented out by default (uncomment and fill it in to enable).
+11. **Cookie consent** (optional) — see [Cookie consent](#cookie-consent) below.
 
 ## Content structure
 
@@ -78,6 +81,26 @@ Not every post needs a translation. A post without `translation_key` simply
 has no language switcher and only shows up in its own language's blog index,
 category page, and search results — that's the normal, supported case, not
 a degraded one.
+
+### Featuring a post
+
+Add `featured: true` to a post's front matter and it becomes a large card at
+the top of that language's blog index (first page only), with the cover image
+and text side by side on desktop. It's removed from the regular grid below,
+so it doesn't appear twice.
+
+Only one featured post per language is supported at a time — if more than one
+has `featured: true`, the most recent one wins (`where: "featured", true |
+first`, and `site.posts` is already newest-first). There's no automatic
+"latest post" fallback: leave the field out entirely and the blog index just
+shows the regular grid, no featured card. To feature a different post later,
+remove the flag from the old one and add it to the new one.
+
+A cover image (`image`, optionally `image_dark`) isn't required, but the
+featured card looks noticeably better with one. Unlike the regular post
+grid, the featured card doesn't crop the image to a fixed shape — it keeps
+its natural proportions, so wide banners and tall graphics both display in
+full, with no risk of cropping off text baked into the image.
 
 ## How the multilingual system works
 
@@ -136,6 +159,48 @@ the bare domain (or `https://<username>.github.io/<repo>/` with no further
 path) land on `/en/`. If you change `default_lang` in `_config.yml`, **move
 that `redirect_from: /` to the matching language's `index.html`** — only one
 page can claim it (whichever one doesn't, the site root 404s).
+
+## Cookie consent
+
+This theme ships with an optional cookie consent banner
+([CookieConsent v3](https://cookieconsent.orestbida.com/) by Orest Bida, MIT
+licensed) — `_includes/cookieconsent.html`, wired into `_includes/footer.html`.
+It's **self-hosted**: the library's JS/CSS live under
+`static/assets/cookieconsent/`, fetched from this repo like every other
+asset, never from a CDN. That's a deliberate choice — the theme's front page
+promises no *required* third-party JavaScript, and a CDN-loaded script would
+quietly break that promise for every site built on it, whether that site
+actually needs a cookie banner or not.
+
+**Whether you need one at all is a legal question this theme can't answer for
+you** — it depends on your jurisdiction, your visitors', and what you
+actually enable (analytics, comments, ads, ...). Two ways forward:
+
+- **Keep it.** Two consent categories are pre-wired: `necessary` (always on,
+  can't be disabled) and `thirdparty`. The Disqus embed in
+  `_includes/comments.html` only loads once a visitor grants `thirdparty` —
+  it's a `<script type="text/plain" data-category="thirdparty" ...>` tag,
+  inert until CookieConsent flips it on, not a check against a cookie's value
+  (a previous version of this theme did that, and it was buggy: it checked
+  for "accepted everything" instead of the specific category, so choosing
+  "necessary only" could still silently skip loading comments). If you add
+  your own third-party embed later (analytics, an ad script, a different
+  comments platform), give its `<script>` tag the same treatment, or add a
+  new category for it and update the copy in `cookieconsent.html`'s
+  `translations` block to describe what it does.
+- **Remove it.** Delete `_includes/cookieconsent.html`'s `{% include %}` line
+  from `_includes/footer.html`, the "Cookie preferences" link right above it,
+  the `static/assets/cookieconsent/` folder, `_sass/_cookieconsent.scss` and
+  its `@import` in `assets/css/main.scss`. Then decide what to do about
+  `_includes/comments.html`'s `data-category="thirdparty"` script tag —
+  either leave it (browsers just render `type="text/plain"` as inert, so
+  Disqus simply never loads) or turn it back into a plain `<script src="...">`
+  if you've decided you don't need consent-gating at all.
+
+The banner and preferences panel reuse this theme's own design tokens
+(`_sass/_cookieconsent.scss` maps them onto CookieConsent's CSS variables), so
+they follow light/dark/auto automatically — no extra JS, no `.cc--darkmode`
+class to toggle.
 
 ## Deploying to GitHub Pages
 

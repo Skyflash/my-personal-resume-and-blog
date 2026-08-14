@@ -5,6 +5,7 @@ date: '2024-01-01 10:00:00'
 description: "An example post showing how blog posts work in this Jekyll theme."
 intro: "This is a placeholder post. Replace it with your own content — it only exists to show how posts are structured and how the language switcher works."
 lang: en_US
+featured: true
 categories:
 - Notes
 keywords: example, lorem ipsum, jekyll

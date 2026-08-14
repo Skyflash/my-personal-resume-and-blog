@@ -4,21 +4,17 @@
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-  var cookieMatch = document.cookie.match(/(?:^|; )cookiebar=([^;]*)/);
-  var cookieValue = cookieMatch ? decodeURIComponent(cookieMatch[1]) : null;
-
-  if (cookieValue === 'CookieAllowed') {
-    var disqus_config = function () {
-      this.page.url = "{{ page_url }}";
-      this.page.identifier = "{{ page_url }}";
-    };
-    (function () {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://{{ site.disqus.name }}.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  }
+  var disqus_config = function () {
+    this.page.url = "{{ page_url }}";
+    this.page.identifier = "{{ page_url }}";
+  };
 </script>
+{% comment %}
+  type="text/plain" + data-category: this script only actually runs once
+  CookieConsent grants the "thirdparty" category — see _includes/cookieconsent.html.
+  Don't swap this back to a plain <script src="..."> tag, it would load Disqus
+  (and set its cookies) before the visitor has consented to anything.
+{% endcomment %}
+<script type="text/plain" data-category="thirdparty" data-service="Disqus" data-src="https://{{ site.disqus.name }}.disqus.com/embed.js"></script>
 <noscript>{{ site.data.i18n.comments_js_required[short_lang] }}</noscript>
 {% endif %}

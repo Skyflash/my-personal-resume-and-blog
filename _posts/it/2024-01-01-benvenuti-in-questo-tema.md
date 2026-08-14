@@ -5,6 +5,7 @@ date: '2024-01-01 10:00:00'
 description: "Un post di esempio per mostrare come funzionano i post del blog in questo tema Jekyll."
 intro: "Questo è un post segnaposto. Sostituiscilo con i tuoi contenuti reali — esiste solo per mostrare come sono strutturati i post e come funziona lo switcher lingua."
 lang: it_IT
+featured: true
 categories:
 - Appunti
 keywords: esempio, lorem ipsum, jekyll
