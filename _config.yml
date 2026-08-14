@@ -10,6 +10,7 @@ keywords: your-name, resume, cv, blog, jekyll, github-pages
 baseurl: '/my-personal-resume-and-blog' # this repo's own GitHub Pages demo lives under this subpath; if you fork this as your own site, set it to '' (root) unless you're also hosting under a subpath — see the comment below
 url: https://cristiancastellari.it # this repo's own GitHub Pages demo URL — note: if your <username>.github.io site has a custom domain, GitHub nests every project repo under that domain too (see the "Deploying" section below), so this is the domain that actually serves it, not the github.io one; replace with your own domain (or https://<username>.github.io for a project page) when you fork this
 img_path: /static/assets/img/blog
+favicon: /static/assets/img/favicon.svg # replace with your own favicon (svg, ico, or png all work)
 
 #
 ###################################

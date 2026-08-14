@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0] - 2026-08-14 — Configurable favicon, per-post icons
+
+### Added
+
+- `favicon` key in `_config.yml`: the favicon path is no longer hardcoded in `_includes/head.html`, so forks can swap it without touching the template.
+- Post front matter's `icon` field (a [Fork Awesome](https://forkaweso.me/Fork-Awesome/icons/) class, e.g. `fa-book`) is now rendered on blog cards — bottom-right, next to the category pill, colored with `--color-accent`. The field existed in front matter and the docs before this, but no layout ever consumed it.
+- Footer now credits the theme on its own line, separate from the site's own copyright, so the credit survives a fork setting its own `site.author`.
+- "Buy Me a Coffee" support button and `.github/FUNDING.yml`.
+- Social preview screenshots (light/dark) for the repo's GitHub card.
+
 ## [1.0.0] - 2026-08-13 — Initial release
 
 First public release of the theme, extracted from a personal resume/blog site

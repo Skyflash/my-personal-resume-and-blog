@@ -90,6 +90,9 @@ doesn't include one) — it's all plain Liquid and front matter:
   category name — see `_data/blog.yml`, which has one row per language per
   category (name *and* URL slug, since slugs are translated too where it
   makes sense, e.g. `/en/notes/` rather than `/en/appunti/`).
+- **`icon`** (optional) is a [Fork Awesome](https://forkaweso.me/Fork-Awesome/icons/)
+  class, e.g. `fa-book` — shown on the post card in the blog index, next to
+  the category pill. Leave it out to skip the icon.
 - **The language switcher and `hreflang` tags** (`_includes/i18n-alternates.html`)
   work by matching `translation_key` in front matter — the *same* key on two
   posts/pages marks them as translations of each other. This is deliberate:
