@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.4.1] - 2026-08-16 — Two drift fixes found while comparing against skyflash.github.io
+
+### Fixed
+
+- `_config.yml`: `twitter:card` was `summary`, showing a small square image on X/Twitter link previews instead of the post's full cover. Changed to `summary_large_image`.
+- `_layouts/post.html`: related posts used `maxRelated = 4` but render into a 3-column grid (`grid grid--3`) — a 4th related post wrapped alone onto its own row, breaking the grid alignment. Changed to `maxRelated = 3` so the row always fills.
+
+Both were already fixed on skyflash.github.io (the personal site this theme was extracted from) but never ported back.
+
+## [1.4.0] - 2026-08-16 — Google Analytics 4, gated by consent
+
+### Changed
+
+- **Google Analytics upgraded to GA4**: the old integration (`_includes/analytics.html`) used Universal Analytics (`analytics.js`), which Google shut down in July 2023 — it hadn't worked for years even when `ga.id` was set. Replaced with GA4 (`gtag.js`) in a new `_includes/tracking.html`, sent with `anonymize_ip: true`.
+- **Bug fix**: the old script ran unconditionally whenever `site.ga.id` was set, regardless of cookie consent — a real problem for anyone actually using this theme in the EU/UK. `tracking.html` now only *defines* `loadAnalytics()`; `_includes/cookieconsent.html` calls it, and only after the visitor accepts the new "analytics" category in the banner (`onConsent`/`onChange`).
+- `_config.yml`: removed the `go:` (Google Optimize) block — that product was shut down by Google in 2023 and nothing in the theme referenced it besides the old analytics script.
+- `privacy.md`: updated the Google Analytics bullet to point at `_includes/tracking.html` and note that it's consent-gated; also fixed a stale line still describing the cookie consent banner as CDN-loaded from cookie-bar.eu — it was already replaced with the self-hosted CookieConsent v3 in [1.3.0], the doc just wasn't updated at the time.
+- Verified with a local build (including a fake Measurement ID) that the GA script is entirely absent when `ga.id` is unset, and renders correctly when it is.
+
 ## [1.3.0] - 2026-08-14 — Self-hosted cookie consent, more example content
 
 ### Changed

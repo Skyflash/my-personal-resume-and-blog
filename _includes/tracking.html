@@ -1,0 +1,30 @@
+{% comment %}
+  Google Analytics 4 (gtag.js), loaded on demand rather than unconditionally.
+
+  This only *defines* loadAnalytics() — it does not call it. The call happens
+  in cookieconsent.html, once the visitor accepts the "analytics" consent
+  category, so the GA script never runs without consent.
+
+  Not required: if you don't want analytics, leave site.ga.id unset (see
+  _config.yml) and this include renders nothing. You can also delete this
+  file, its include in _includes/head.html, the "analytics" category in
+  cookieconsent.html, and the ga: block in _config.yml.
+{% endcomment %}
+{% if site.ga.id %}
+<script>
+  function loadAnalytics() {
+    if (window.analyticsLoaded) return;
+    window.analyticsLoaded = true;
+
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.ga.id }}';
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '{{ site.ga.id }}', { 'anonymize_ip': true });
+  }
+</script>
+{% endif %}

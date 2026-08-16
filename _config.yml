@@ -51,7 +51,7 @@ social:
     # en/contact.html for which of these are actually rendered as icons
 
 twitter:
-  card: summary
+  card: summary_large_image
   username: your_twitter_handle
 
 webmaster_verifications:
@@ -83,13 +83,9 @@ disqus: # get your own shortname at https://disqus.com/, or comment out the two 
   name: your-disqus-shortname
 
 # analytics
-## google analytics
-ga: # get your own measurement ID at https://www.google.com/analytics/, or leave the id commented out to disable
+## google analytics (GA4)
+ga: # get your own measurement ID at https://analytics.google.com/, or leave the id commented out to disable
 #  id: G-XXXXXXXXXX
-
-## google optimize
-go:
-  # id:
 
 plugins:
   - jekyll-seo-tag

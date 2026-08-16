@@ -13,8 +13,8 @@ What you're legally required to disclose depends on your country, on whether you
 Things to check for **this theme specifically**, since each one has its own privacy implications if you enable it:
 
 - **Disqus comments** (`_config.yml` → `disqus:`, `_includes/comments.html`) — Disqus sets cookies and processes commenter data; see [Disqus's own privacy documentation](https://disqus.com/data-sharing-settings/).
-- **Google Analytics** (`_config.yml` → `ga:`, `_includes/analytics.html`) — collects visitor analytics data.
-- **Cookie consent banner** (`_includes/cookieconsent.html`) — loaded from a third-party CDN ([cookie-bar.eu](https://cookie-bar.eu)); read their terms if you keep it, or replace it with your own.
+- **Google Analytics** (`_config.yml` → `ga:`, `_includes/tracking.html`) — collects visitor analytics data (GA4, with IP anonymization), loaded only after the visitor accepts the "analytics" category in the cookie consent banner.
+- **Cookie consent banner** (`_includes/cookieconsent.html`) — [CookieConsent v3](https://cookieconsent.orestbida.com/), self-hosted under `static/assets/cookieconsent/` (not loaded from a CDN); read their terms if you keep it, or replace it with your own.
 - **GitHub API calls** for live star/fork counts on the Projects page (`assets/js/github-stats.js`) — client-side only, no server of yours is involved, but it does call `api.github.com` from the visitor's browser.
 
 This page is linked from the footer (`_includes/footer.html`) and from `_data/i18n.yml` (`footer_privacy`). Feel free to rename, remove, or restructure it entirely.
