@@ -12,6 +12,7 @@ Both were already fixed on skyflash.github.io (the personal site this theme was 
 ### Changed
 
 - `.gitignore`: ignore `SEO-REPORT.md`, the local report written by the weekly SEO Monitor.
+- Claude Code skills are now versioned in `.claude/skills/` (installed with `npx autoskills -a claude-code`), so they are available on every machine.
 
 ## [1.4.0] - 2026-08-16 — Google Analytics 4, gated by consent
 
