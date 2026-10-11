@@ -9,6 +9,10 @@
 
 Both were already fixed on skyflash.github.io (the personal site this theme was extracted from) but never ported back.
 
+### Changed
+
+- `.gitignore`: ignore `SEO-REPORT.md`, the local report written by the weekly SEO Monitor.
+
 ## [1.4.0] - 2026-08-16 — Google Analytics 4, gated by consent
 
 ### Changed
