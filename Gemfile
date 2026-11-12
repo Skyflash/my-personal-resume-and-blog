@@ -7,7 +7,7 @@ source 'https://rubygems.org'
 # breaking only once published (jekyll-seo-tag and jekyll-redirect-from are
 # already included as dependencies of this gem; blog pagination is handled
 # by hand in _layouts/blog-index.html, not by jekyll-paginate).
-gem "github-pages", "~> 232", group: :jekyll_plugins
+gem "github-pages", "~> 233", group: :jekyll_plugins
 
 # Ruby 3.4+ stopped shipping these as default gems; Jekyll/Liquid still need them
 gem 'logger'
