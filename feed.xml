@@ -1,4 +1,6 @@
 ---
+sitemap:
+  exclude: 'yes'
 layout: null
 redirect_from:
   - /feed/

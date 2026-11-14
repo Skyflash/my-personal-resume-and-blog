@@ -30,7 +30,13 @@ sitemap:
     {% endunless %}
   {% endfor %}
   {% for page in site.pages %}
-    {% unless page.sitemap.exclude == "yes" %}
+    {% comment %}
+      Skipped: pages with `sitemap: exclude: 'yes'` in their front matter, plus
+      plugin-generated files that have no front matter to set it in: the
+      jekyll-redirect-from redirect stubs (page.redirect) and its
+      redirects.json, and the default theme's unused style.css.
+    {% endcomment %}
+    {% unless page.sitemap.exclude == "yes" or page.redirect or page.name == "redirects.json" or page.url == "/assets/css/style.css" %}
     <url>
       <loc>{{ site.url }}{{ site.baseurl }}{{ page.url | remove: "index.html" }}</loc>
       {% if page.sitemap.lastmod %}
