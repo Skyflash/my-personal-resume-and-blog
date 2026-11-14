@@ -3,9 +3,9 @@
 # Site wide configuration
 ####################################
 #
-title: Your Name — Resume & Blog
+title: Personal Resume & Blog — bilingual Jekyll resume theme # this repo's own demo title (shown after the "|" in every <title> and as og:site_name); replace with your own, e.g. "Your Name — Resume & Blog", when you fork this
 tagline: "Work and personal interests"
-description: "The resume, work experience and blog of Your Name."
+description: "A bilingual (Italian/English) Jekyll theme for a personal resume, CV and blog, ready for GitHub Pages." # this repo's own demo description; replace with your own, e.g. "The resume, work experience and blog of Your Name."
 keywords: your-name, resume, cv, blog, jekyll, github-pages
 baseurl: '/my-personal-resume-and-blog' # this repo's own GitHub Pages demo lives under this subpath; if you fork this as your own site, set it to '' (root) unless you're also hosting under a subpath — see the comment below
 url: https://cristiancastellari.it # this repo's own GitHub Pages demo URL — note: if your <username>.github.io site has a custom domain, GitHub nests every project repo under that domain too (see the "Deploying" section below), so this is the domain that actually serves it, not the github.io one; replace with your own domain (or https://<username>.github.io for a project page) when you fork this
